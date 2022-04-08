@@ -67,6 +67,23 @@ will display a result for Indiana State, US
 #### About Range Origin (and some other stuff):
 The scraper builds a list of dates to inject into http queries. The dates are calculated by starting at the origin date (defaults to yesterday, because the current days data hasn't been collected) and stepping backwards one day at a time, n times. n is defined by the optional -r tag's argument; if not provided it defaults to 7. 
 
+## Output Explained:
+So the output of running this program will initially look like this:
+        Total cases as of 04/02: 1691470
+        Total deaths (confirmed + probable) as of 04/02: 23431
+        Case Growth over 7 day(s) (03/27-04/02): 1326
+        Death Growth over 7 day(s) (03/27-04/02): 75
+        7 Day Death Avg: 10.71
+        7 Day Active/Recovered Case Avg: 178.71
+The numbers probably won't add up, as this is a response to a state data query. Also, I say initially because there are some print statements you can uncomment for more data. 
+- Total cases, this data is an aggregate of deaths, recovered, active. Unfortunately, at this point, recovered and active aren't actively being recorded, so we can only postulate as to active and recovered individual data points
+- Total deaths (confirmed + probable), due to how deaths are marked down and reported to the DOH there is a small amount of padding in the number in the probable portion. Also because sometimes cause of death is a medley of things. 
+- Case Growth, refers to how many new reported cases there are within the given time period for the specified region
+- Death Growth, refers to how many new deaths there are within the given time period for the specified region
+- 7 Day Death Avg, average deaths per day over the given time period for the specified region
+- 7 Day Active/Recovered, the closest we can get to a 7 day active average over the given time period for the specified region
+
+
 ## List of Commands (for the smarticle particles):
 
 1. python scrapeCovidData.py
