@@ -27,8 +27,8 @@ This shell tool supports custom queries through the use of tags! There are 7 tag
 They can be mixed and matched to your heart's content. See what kind of crazy queries you can make!
 
 ### Custom Date Range:
-The date range is changed with the -r tag: 
-> python scrapeCovidData.py -r 10
+The date range is changed with the -r tag:
+> python scrapeCovidData.py -r 10  
 will display a result that spans ten days
 
 ### Custom Date Range Origin (more on this: About Range Origin):
