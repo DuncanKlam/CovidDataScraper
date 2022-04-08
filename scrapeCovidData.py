@@ -3,6 +3,7 @@
 import sys
 import requests
 import re
+import math
 from bs4 import BeautifulSoup
 from datetime import date
 from datetime import timedelta
@@ -32,11 +33,11 @@ error_message = "\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n".format(optional_help,day
 def build_url(date):
     return "{0}{1}-{2}-{3}.csv".format(URL_BASE,date[1],date[2],date[0])
 
-def build_date_list(num_of_days, origin):
+def build_date_list(numOfDays, origin):
     dates = []
-    for i in range(num_of_days):
-        past_date = origin - timedelta(days=(i))
-        dates.append(str(past_date).split("-"))
+    for i in range(numOfDays):
+        pastDate = origin - timedelta(days=(i))
+        dates.append(str(pastDate).split("-"))
     dates.reverse()
     return dates
  
@@ -45,31 +46,46 @@ def get_count(index,array):
    
 def get_date(index,array):
     return array[index].get("date")
+    
+def get_confirmed(index, array):
+    return array[index].get("confirmed")
 
 def calculate_count_total(array):
-    total = 0
-    for num in array:
-        total += num
-    return total
+    totalConfirmed = 0
+    totalDead = 0
+    for item in array:
+        totalConfirmed += item.get("confirmed")
+        totalDead += item.get("deaths")
+    return totalConfirmed, totalDead
+
+def trunc(number, decimalPlace):
+    factor = 10.0 ** decimalPlace
+    return math.trunc(number * factor) / factor
 
 ##Print Statements##
-def whitespace():
+def whitespace_():
     print("\n\n")
 
-def improper_response(arg,tag,reason):
+def improper_response_(tag,arg,reason):
     sys.exit("\tERROR===========================\n\tIMPROPER INPUT: {0} -> {1}\n\tREASON: {0} {2}".format(tag,arg,reason))
 
-def display_location_information(specificLoc,specificLocType,generalLoc):
+def display_location_information_(specificLoc,specificLocType,generalLoc):
     print("\t{0} {1}, {2}\n".format(specificLoc,specificLocType,generalLoc))
 
-def display_covid_data(firstDate,lastDate,lastValue,dayRange, caseDiff):
-    print("\tTotal cases as of {1}: {0}".format(lastValue,lastDate))
-    print("\tCase Growth over {0} day(s) ({2}-{3}): {1}".format(dayRange,caseDiff,firstDate,lastDate))
-    print("\t{0} Day Avg: {1}".format(dayRange,caseDiff/dayRange))
+def display_covid_data_(formerDate,recentDate,formerCount,recentCount,formerConfirmed,recentConfirmed,formerDead,recentDead,dayRange):
+    print("\tTotal cases as of {1}: {0}".format(recentConfirmed,recentDate))
+    print("\tTotal deaths (confirmed + probable) as of {1}: {0}".format(recentDead,recentDate))
+    #print("\tTotal active/recovered cases as of {1}: {0}".format(recentConfirmed-recentDead,recentDate))
+    print("\tCase Growth over {0} day(s) ({2}-{3}): {1}".format(dayRange,recentConfirmed-formerConfirmed,formerDate,recentDate))
+    print("\tDeath Growth over {0} day(s) ({2}-{3}): {1}".format(dayRange,recentDead-formerDead,formerDate,recentDate))
+    #print("\tActive/Recovered Growth over {0} day(s) ({2}-{3}): {1}".format(dayRange,(recentConfirmed-formerConfirmed)-(recentDead-formerDead),formerDate,recentDate))
+    #print("\t{0} Day Case Avg: {1}".format(dayRange,trunc((recentConfirmed-formerConfirmed)/dayRange,2)))
+    print("\t{0} Day Death Avg: {1}".format(dayRange,trunc((recentDead-formerDead)/dayRange,2)))
+    print("\t{0} Day Active/Recovered Case Avg: {1}".format(dayRange,trunc(((recentConfirmed-formerConfirmed)-(recentDead-formerDead))/dayRange,2)))
 
 
 ##Logic Checks##
-def date_range_is_incorrect(arg):
+def is_date_range_incorrect(arg):
     if(arg.isnumeric()):
         if(int(arg) < 1):
             return True
@@ -78,7 +94,7 @@ def date_range_is_incorrect(arg):
     else:
         return True
 
-def previous_arg_is_valid_tag(arg):
+def is_previous_arg_valid_tag(arg):
     if arg == "-c" or arg == "-r" or arg == "-s" or arg == "-o":
         return True
     else:
@@ -86,7 +102,7 @@ def previous_arg_is_valid_tag(arg):
 
 def is_tag_last_in_array_(i,array):
     if(i+1 == len(array)): #Check if tag is last argument in argv
-        improper_response("",array[i],"has no value")
+        improper_response_(array[i],"","has no value")
 
 ##Query Conditions##
 def county_query_condition(county, state):
@@ -105,7 +121,10 @@ def get_case_count(url, condition):
     for i in results:
         entry = i.contents[0].split(",")
         if(condition(entry)):
-            result.append(int(entry[7]))
+            result.append({
+            'confirmed' : int(entry[7]),
+            'deaths' : int(entry[8])
+            })
     return result
 
 ##The Heavy Lifting##
@@ -127,17 +146,18 @@ def scrape_processor_(dayRange, rangeOrigin, condition, locationInfo):
     
     caseCount = scrape_data(dayRange,condition, dateList)
     
-    lastCount = get_count(dayRange-1,caseCount)
-    lastDate = get_date(dayRange-1, caseCount)
-    firstCount = get_count(0,caseCount)
-    firstDate = get_date(0,caseCount)
+    recentCount = get_count(dayRange-1,caseCount)
+    recentDate = get_date(dayRange-1, caseCount)
+    formerCount = get_count(0,caseCount)
+    formerDate = get_date(0,caseCount)
     
-    caseDiff = calculate_count_total(lastCount) - calculate_count_total(firstCount)
+    recentConfirmed, recentDead = calculate_count_total(recentCount)
+    formerConfirmed, formerDead = calculate_count_total(formerCount)
     
-    whitespace()
-    display_location_information(locationInfo[0],locationInfo[1],locationInfo[2])
-    display_covid_data(firstDate,lastDate,lastCount[0], dayRange, caseDiff)
-    whitespace()
+    whitespace_()
+    display_location_information_(locationInfo[0],locationInfo[1],locationInfo[2])
+    display_covid_data_(formerDate,recentDate,formerCount,recentCount,formerConfirmed,recentConfirmed,formerDead,recentDead,dayRange)
+    whitespace_()
 
 
 
@@ -150,29 +170,29 @@ for i in range(len(sys.argv)):
         if (sys.argv[i] == "-r"): #range tag
             is_tag_last_in_array_(i, sys.argv)
             newRange = sys.argv[i+1]
-            if(date_range_is_incorrect(newRange)):
-                improper_response(sys.argv[i+1],"-r","is either zero, negative, or a string")
+            if(is_date_range_incorrect(newRange)):
+                improper_response_("-r",sys.argv[i+1],"is either zero, negative, or a string")
             else:
                 r = int(newRange)
         elif (sys.argv[i] == "-c"): #county tag
             is_tag_last_in_array_(i, sys.argv)
             newCounty = sys.argv[i+1]
             if(newCounty.isnumeric()):
-                improper_response(sys.argv[i+1],"-c","is a number")
+                improper_response_("-c",sys.argv[i+1],"is a number")
             else:
                 c = newCounty
         elif (sys.argv[i] == "-s"): #state tag
             is_tag_last_in_array_(i, sys.argv)
             newState = sys.argv[i+1]
             if(newState.isnumeric()):
-                improper_response(sys.argv[i+1],"-s","is a number")
+                improper_response_("-s",sys.argv[i+1],"is a number")
             else:
                 s = newState
         elif (sys.argv[i] == "-o"): #origin tag
             is_tag_last_in_array_(i, sys.argv)
             newOrigin = sys.argv[i+1]
             if(newOrigin.isnumeric()):
-                improper_response(sys.argv[i+1],"-o","is incorrect")
+                improper_response_("-o",sys.argv[i+1],"is incorrect")
             else:
                 l = newOrigin.split(",")
                 o = date(int(l[0]),int(l[1]),int(l[2]))
@@ -182,8 +202,8 @@ for i in range(len(sys.argv)):
             isCountyDataRequested = False;
             isStateDataRequested = True;
         else:   
-            if (not previous_arg_is_valid_tag(sys.argv[i-1])):
-                improper_response("",sys.argv[i],"is not a valid tag")
+            if (not is_previous_arg_valid_tag(sys.argv[i-1])):
+                improper_response_(sys.argv[i],"","is not a valid tag")
 
 ######Driver Code#######
 if(isCountyDataRequested):
