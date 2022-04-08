@@ -107,9 +107,9 @@ The numbers probably won't add up, as this is a response to a state data query. 
 
 - <h4>Death Growth:</h4> refers to how many new deaths there are within the given time period for the specified region  
 
-- <h4>7 Day Death Avg:</h4> average deaths per day over the given time period for the specified region  
+- <h4>Death Avg:</h4> average deaths per day over the given time period for the specified region  
 
-- <h4>7 Day Active/Recovered:</h4> the closest we can get to a 7 day active average over the given time period for the specified region  
+- <h4>Active/Recovered Avg:</h4> the closest we can get to a 7 day active average over the given time period for the specified region  
 
 
 ## List of Commands (for the smarticle particles):
