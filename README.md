@@ -5,7 +5,7 @@
 <ol>
     <li> Prerequisites: 
         <ol>
-            <li>Python3 [<a href='https://www.python.org/downloads/'>download link</a>] (make sure you enable pip)</li>
+            <li>Python3 [<a href='https://www.python.org/downloads/'>download link</a>] (make sure you enable pip, it's required for this)</li>
             <li>3 python libraries (which are all fairly useful, in my opinion):
                 <ol>
                     <li>requests [<a href='https://docs.python-requests.org/en/latest/'>python-docs</a>]</li>
@@ -13,7 +13,7 @@
                     <li>halo (this is for you, mac users) [<a href='https://github.com/manrajgrover/halo'>github-repo</a>]</li>
                 </ol>
             </li>
-            <li>libraries can be easily installed with using a shell with
+            <li>libraries can be easily installed using a shell with the command:
                 <ol>
                     <li>\~> pip install library_name</li>
                 </ol>
@@ -25,7 +25,7 @@
     <li>\CovidDataScraper-1.1.0> python scrapeCovidData.py</li>
 </ol>  
   
-It's that simple! A spinner will pop up until the scraper stops scraping (it's a lot of data), and then the shell will display the last seven days of covid data about Delaware County, Indiana. Read on to learn about custom queries, or skip to the bottom to find a list of commands to run to figure it out yourself.  
+It's that simple! A spinner will pop up until the scraper stops scraping (it's a lot of data), and then the shell will display the last seven days of covid data about Delaware County, Indiana. Read on to learn about custom queries, or skip to the bottom to find a list of commands to run to figure it out yourself. You are also more than welcome to chnge the defaults that this program has. Using your favorite text editor, open up the .py file and change the variables in the "Constants and things" area, then save and rerun. 
   
 ## Custom Queries
 This shell tool supports custom queries through the use of tags! There are 7 tags associated with this shell tool:
@@ -109,7 +109,7 @@ The numbers probably won't add up, as this is a response to a state data query. 
 
 - <h4>Death Avg:</h4> average deaths per day over the given time period for the specified region  
 
-- <h4>Active/Recovered Avg:</h4> the closest we can get to a 7 day active average over the given time period for the specified region  
+- <h4>Active/Recovered Avg:</h4> the closest we can get to a 7 day active average over the given time period for the specified region. The way to interpret this (at least before the algorithm gets more advanced) is to think of it as two columns, with whatever number being split between them. If case growth is low and deaths are low and the A/R average is still high, it means that people are simply living wiht the virus, or getting cured. (Not very helpful i know, but we do what we can).
 
 
 ## List of Commands (for the smarticle particles):
