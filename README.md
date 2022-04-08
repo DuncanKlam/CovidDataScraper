@@ -2,14 +2,21 @@
  
 ## How to Use:
 
-1. Prereqs:
-        -   Python3 [download link](https://www.python.org/downloads/) (make sure you enable pip)  
-        -   3 python libraries:  
-                    -   requests  
-                    -   beautifulsoup4  
-                    -   halo  
-        -   libraries can be easily installed with using a shell with
-                    -   > pip install library_name  
+
+
+1. Prereqs: 
+ 
+<ol>
+  <li>FPython3 [download link](https://www.python.org/downloads/) (make sure you enable pip)</li>
+  <li>3 python libraries (which are all fairly useful, in my opinion):
+    <ol>
+      <li>requests</li>
+      <li>beautifulsoup4</li>
+      <li>halo</li>
+    </ol>
+  </li>
+  <li>libraries can be easily installed with using a shell with  > pip install library_name </li>
+</ol> 
   
 1. Download the most recent release of this file (v.1.1.0 as of 4/7/2022)  
 
