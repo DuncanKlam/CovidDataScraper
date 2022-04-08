@@ -5,12 +5,12 @@
 <ol>
     <li> Prereqs: 
         <ol>
-            <li>Python3 <a href='https://www.python.org/downloads/'>[download link]</a>(make sure you enable pip)</li>
+            <li>Python3 [<a href='https://www.python.org/downloads/'>download link</a>] (make sure you enable pip)</li>
             <li>3 python libraries (which are all fairly useful, in my opinion):
                 <ol>
-                    <li>requests</li>
-                    <li>beautifulsoup4</li>
-                    <li>halo (this is for you mac users)</li>
+                    <li>requests [<a href='https://docs.python-requests.org/en/latest/'>python-docs</a>]</li>
+                    <li>beautifulsoup4 [<a href='https://pypi.org/project/beautifulsoup4/'>pypi-documentation</a>]</li>
+                    <li>halo (this is for you, mac users) [<a href='https://github.com/manrajgrover/halo'>github-repo</a>]</li>
                 </ol>
             </li>
             <li>libraries can be easily installed with using a shell with
