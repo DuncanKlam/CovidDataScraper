@@ -10,7 +10,7 @@
 
 1. \> python scrapeCovidData.py
 
-It's that simple! A spinner will pop up until the scraper stops scraping (it's a lot of data), and will display the last seven days of covid data about Delaware County, Indiana. Read on to learn about custom queries, or skip to the bottom to find a list of commands to run to figure it out yourself. 
+It's that simple! A spinner will pop up until the scraper stops scraping (it's a lot of data), and then the shell will display the last seven days of covid data about Delaware County, Indiana. Read on to learn about custom queries, or skip to the bottom to find a list of commands to run to figure it out yourself. 
 
 ## Custom Queries
 This shell tool supports custom queries through the use of tags! There are 7 tags associated with this shell tool:
