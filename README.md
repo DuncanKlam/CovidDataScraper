@@ -1,31 +1,28 @@
-# Covid Data Scraper (Shell Tool) (in Python)
- 
-## How to Use:
-
-
-
-1. Prereqs: 
- 
-<ol>
-  <li>FPython3 [download link](https://www.python.org/downloads/) (make sure you enable pip)</li>
-  <li>3 python libraries (which are all fairly useful, in my opinion):
-    <ol>
-      <li>requests</li>
-      <li>beautifulsoup4</li>
-      <li>halo</li>
-    </ol>
-  </li>
-  <li>libraries can be easily installed with using a shell with  > pip install library_name </li>
-</ol> 
+# Covid Data Scraper (Shell Tool) (in Python)  
   
-1. Download the most recent release of this file (v.1.1.0 as of 4/7/2022)  
+## How to Use:  
 
-1. Open your shell tool (I enjoy Powershell) and navigate to the CovidDataScraper-1.1.0 folder, where scrapeCovidData.py is located
-
-1. \> python scrapeCovidData.py
-
-It's that simple! A spinner will pop up until the scraper stops scraping (it's a lot of data), and then the shell will display the last seven days of covid data about Delaware County, Indiana. Read on to learn about custom queries, or skip to the bottom to find a list of commands to run to figure it out yourself. 
-
+<ol>
+    <li> Prereqs: 
+        <ol>
+            <li>FPython3 [download link](https://www.python.org/downloads/) (make sure you enable pip)</li>
+            <li>3 python libraries (which are all fairly useful, in my opinion):
+                <ol>
+                    <li>requests</li>
+                    <li>beautifulsoup4</li>
+                    <li>halo</li>
+                </ol>
+            </li>
+            <li>libraries can be easily installed with using a shell with  > pip install library_name </li>
+        </ol> 
+    </li>
+    <li>Download the most recent release of this file (v.1.1.0 as of 4/7/2022)</li>
+    <li>Open your shell tool (I enjoy Powershell) and navigate to the CovidDataScraper-1.1.0 folder, where scrapeCovidData.py is located</li>
+    <li>\> python scrapeCovidData.py</li>
+</ol>  
+  
+It's that simple! A spinner will pop up until the scraper stops scraping (it's a lot of data), and then the shell will display the last seven days of covid data about Delaware County, Indiana. Read on to learn about custom queries, or skip to the bottom to find a list of commands to run to figure it out yourself.  
+  
 ## Custom Queries
 This shell tool supports custom queries through the use of tags! There are 7 tags associated with this shell tool:
 <ul>
