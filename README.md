@@ -84,7 +84,7 @@ So the output of running this program will initially look like this:
 >7 Day Active/Recovered Case Avg: 178.71  
   
 The numbers probably won't add up, as this is a response to a state data query. Also, I say initially because there are some print statements you can uncomment for more data. 
-- Total cases: this data is an aggregate of deaths, recovered, active. Unfortunately, at this point, recovered and active aren't actively being recorded, so we can only postulate as to active and recovered individual data points
+- <h4>Total cases:</h4> this data is an aggregate of deaths, recovered, active. Unfortunately, at this point, recovered and active aren't actively being recorded, so we can only postulate as to active and recovered individual data points
 - Total deaths (confirmed + probable): due to how deaths are marked down and reported to the DOH there is a small amount of padding in the number in the probable portion. Also because sometimes cause of death is a medley of things. 
 - Case Growth: refers to how many new reported cases there are within the given time period for the specified region
 - Death Growth: refers to how many new deaths there are within the given time period for the specified region
