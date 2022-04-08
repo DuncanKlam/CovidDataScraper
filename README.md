@@ -20,7 +20,7 @@
             </li>
         </ol> 
     </li>
-    <li>Download the most recent release of this file (v.1.1.0 as of 4/8/2022)</li>
+    <li>Download the most recent release of this file (v1.1.0 as of 4/8/2022)</li>
     <li>Open your shell tool (I enjoy Powershell) and navigate to the CovidDataScraper-1.1.0 folder, where scrapeCovidData.py is located</li>
     <li>\CovidDataScraper-1.1.0> python scrapeCovidData.py</li>
 </ol>  
