@@ -20,9 +20,9 @@
             </li>
         </ol> 
     </li>
-    <li>Download the most recent release of this file (v1.1.0 as of 4/8/2022)</li>
-    <li>Open your shell tool (I enjoy Powershell) and navigate to the CovidDataScraper-1.1.0 folder, where scrapeCovidData.py is located</li>
-    <li>\CovidDataScraper-1.1.0> python scrapeCovidData.py</li>
+    <li>Download the most recent release of this file (v1.2.0 as of 4/8/2022)</li>
+    <li>Open your shell tool (I enjoy Powershell) and navigate to the CovidDataScraper-1.2.0 folder, where scrapeCovidData.py is located</li>
+    <li>\CovidDataScraper-1.2.0> python scrapeCovidData.py</li>
 </ol>  
   
 It's that simple! A spinner will pop up until the scraper stops scraping (it's a lot of data), and then the shell will display the last seven days of covid data about Delaware County, Indiana. Read on to learn about custom queries, or skip to the bottom to find a list of commands to run to figure it out yourself. You are also more than welcome to chnge the defaults that this program has. Using your favorite text editor, open up the .py file and change the variables in the "Constants and things" area, then save and rerun. 
@@ -125,6 +125,10 @@ The numbers probably won't add up, as this is a response to a state data query. 
 1. python scrapeCovidData.py -r 8 -c 'Wayne' -s 'Michigan' -o '2022,3,20' -S
 
 1. python scrapeCovidData.py -r 8 -s 'Michigan' -o '2022,3,20' -SO
+
+
+## Personal Setup:
+The whole purpose for this project originated from a desire to be able to have access to covid data at my fingertips. Arguably, that's already the definition, but I want it faster than that. Instead of having to navigate to a website, I'd much rather just run a script. So, this project. Additionally, I think it's annoying to navigate to a certain folder to run a script every time, so I set the location to be an environment variable. A similar effect could be making a designated scripts folder, then having the Environment variable be a pointer to that. Since this is my first useful script, I'll stick with this for now. The other thing I did to make it even quicker was assign the environment variable a hotstring using AutoHotKey. Now I can just open a terminal and type covidd and press >Space< to have it done automatically. 
 
 ## Closing Ramble:
 This started as a simple web scraping exercise in Python. What it turned into is a perhaps a pre-optimized overworked shell tool project but it is semi-useful so I'm counting it as a success.
