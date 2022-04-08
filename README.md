@@ -5,7 +5,7 @@
 <ol>
     <li> Prereqs: 
         <ol>
-            <li>FPython3 [download link](https://www.python.org/downloads/) (make sure you enable pip)</li>
+            <li>Python3 <a href='https://www.python.org/downloads/'>[download link]</a>(make sure you enable pip)</li>
             <li>3 python libraries (which are all fairly useful, in my opinion):
                 <ol>
                     <li>requests</li>
