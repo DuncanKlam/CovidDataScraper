@@ -88,8 +88,14 @@ def is_tag_last_in_array_(i,array):
     if(i+1 == len(array)): #Check if tag is last argument in argv
         improper_response("",array[i],"has no value")
 
+##Query Conditions##
+def county_query_condition(county, state):
+    return (lambda entry : entry[2] == state and entry[1] == county)
+        
+def state_query_condition(state):
+    return (lambda entry : entry[2] == state)
 
-##The Heavy Lifting##
+##HTML Procesing##
 def get_case_count(url, condition):
     page = requests.get(url)
 
@@ -102,6 +108,7 @@ def get_case_count(url, condition):
             result.append(int(entry[7]))
     return result
 
+##The Heavy Lifting##
 def scrape_data(dayRange,condition, dateList):
     caseCount = []
     spinner = Halo(text='Loading', spinner="dots", color='red')
@@ -133,12 +140,7 @@ def scrape_processor_(dayRange, rangeOrigin, condition, locationInfo):
     whitespace()
 
 
-def county_query_condition(county, state):
-    return (lambda entry : entry[2] == state and entry[1] == county)
-        
 
-def state_query_condition(state):
-    return (lambda entry : entry[2] == state)
  
 ######CLI Arguments Processing#######
 for i in range(len(sys.argv)):
