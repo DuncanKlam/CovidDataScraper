@@ -5,10 +5,11 @@
 1. Prereqs:
         -   Python3 [download link](https://www.python.org/downloads/) (make sure you enable pip)  
         -   3 python libraries:  
-                -   requests  
-                -   beautifulsoup4  
-                -   halo  
-        -   libraries can be easily installed with > pip install library_name  
+                    -   requests  
+                    -   beautifulsoup4  
+                    -   halo  
+        -   libraries can be easily installed with using a shell with
+                    -   > pip install library_name  
   
 1. Download the most recent release of this file (v.1.1.0 as of 4/7/2022)  
 
