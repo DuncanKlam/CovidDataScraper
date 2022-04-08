@@ -3,7 +3,7 @@
 ## How to Use:  
 
 <ol>
-    <li> Prereqs: 
+    <li> Prerequisites: 
         <ol>
             <li>Python3 [<a href='https://www.python.org/downloads/'>download link</a>] (make sure you enable pip)</li>
             <li>3 python libraries (which are all fairly useful, in my opinion):
@@ -15,14 +15,14 @@
             </li>
             <li>libraries can be easily installed with using a shell with
                 <ol>
-                    <li>\> pip install library_name</li>
+                    <li>\~> pip install library_name</li>
                 </ol>
             </li>
         </ol> 
     </li>
-    <li>Download the most recent release of this file (v.1.1.0 as of 4/7/2022)</li>
+    <li>Download the most recent release of this file (v.1.1.0 as of 4/8/2022)</li>
     <li>Open your shell tool (I enjoy Powershell) and navigate to the CovidDataScraper-1.1.0 folder, where scrapeCovidData.py is located</li>
-    <li>\> python scrapeCovidData.py</li>
+    <li>\CovidDataScraper-1.1.0> python scrapeCovidData.py</li>
 </ol>  
   
 It's that simple! A spinner will pop up until the scraper stops scraping (it's a lot of data), and then the shell will display the last seven days of covid data about Delaware County, Indiana. Read on to learn about custom queries, or skip to the bottom to find a list of commands to run to figure it out yourself.  
