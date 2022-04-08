@@ -10,10 +10,14 @@
                 <ol>
                     <li>requests</li>
                     <li>beautifulsoup4</li>
-                    <li>halo</li>
+                    <li>halo (this is for you mac users)</li>
                 </ol>
             </li>
-            <li>libraries can be easily installed with using a shell with  > pip install library_name </li>
+            <li>libraries can be easily installed with using a shell with
+                <ol>
+                    <li>\> pip install library_name</li>
+                </ol>
+            </li>
         </ol> 
     </li>
     <li>Download the most recent release of this file (v.1.1.0 as of 4/7/2022)</li>
