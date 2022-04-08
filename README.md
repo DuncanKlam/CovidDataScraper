@@ -28,7 +28,7 @@ They can be mixed and matched to your heart's content. See what kind of crazy qu
 
 ## Custom Date Range:
 The date range is changed with the -r tag:  
-> python scrapeCovidData.py -r 10  
+> \>python scrapeCovidData.py -r 10  
   
 will display a result that spans ten days
 
