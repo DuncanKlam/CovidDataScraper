@@ -27,7 +27,10 @@ origin_help = "-o str ::Origin Date::Date to begin ranging back from::Default is
 state_data_also_help = "-S ::State Data Retrieval Also::Adds state data retrieval after county data retrieval::Default==False"
 state_data_only_help = "-SO ::State Data Retrieval Only::Changes data retrieval from county to state::Default==False"
 error_message = "\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n".format(optional_help,day_num_help,county_help,state_help,origin_help,state_data_also_help,state_data_only_help)
-
+newSpinner = {
+    'interval': 100,
+    'frames': ['', '-', '--', '---', '----', ' ----', '  ----', '   ----', '    ----','     ----','      ----','       ----','        ----', '         ---', '          --' , '           -']
+}
 
 ##Utility Methods, Builder/Retreival/Calculators##
 def build_url(date):
@@ -79,7 +82,7 @@ def display_covid_data_(formerDate,recentDate,formerCount,recentCount,formerConf
     print("\tCase Growth over {0} day(s) ({2}-{3}): {1}".format(dayRange,recentConfirmed-formerConfirmed,formerDate,recentDate))
     print("\tDeath Growth over {0} day(s) ({2}-{3}): {1}".format(dayRange,recentDead-formerDead,formerDate,recentDate))
     #print("\tActive/Recovered Growth over {0} day(s) ({2}-{3}): {1}".format(dayRange,(recentConfirmed-formerConfirmed)-(recentDead-formerDead),formerDate,recentDate))
-    #print("\t{0} Day Case Avg: {1}".format(dayRange,trunc((recentConfirmed-formerConfirmed)/dayRange,2)))
+    print("\t{0} Day Case Avg: {1}".format(dayRange,trunc((recentConfirmed-formerConfirmed)/dayRange,2)))
     print("\t{0} Day Death Avg: {1}".format(dayRange,trunc((recentDead-formerDead)/dayRange,2)))
     print("\t{0} Day Active/Recovered Case Avg: {1}".format(dayRange,trunc(((recentConfirmed-formerConfirmed)-(recentDead-formerDead))/dayRange,2)))
 
@@ -130,7 +133,7 @@ def get_case_count(url, condition):
 ##The Heavy Lifting##
 def scrape_data(dayRange,condition, dateList):
     caseCount = []
-    spinner = Halo(text='Loading', spinner="dots", color='red')
+    spinner = Halo(text='Loading...', spinner="dots", color='red')
     spinner.start()
     for i in dateList:
         dailyNumbers = get_case_count(build_url(i),condition)
